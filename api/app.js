@@ -19,7 +19,7 @@ app.use('/api/v1/', authorize, postRouter);
 app.use('/docs', swaggerui.serve, swaggerui.setup(swag));
 // Spinning up Server and Database
 const port = process.env.PORT;
-const url = process.env.MONGO_URI;
+const url = process.env.MONGO_URI; // Connection string for MongoDB
 
 const start = async () => {
   try {
@@ -27,7 +27,7 @@ const start = async () => {
     app.listen(port, () => console.log(`Server is listening on port ${port}...`));
   } catch (error) {
     console.log(error);
-    process.exit(1);
+    process.exit(1); // 1 means exit with failure
   }
 };
 
