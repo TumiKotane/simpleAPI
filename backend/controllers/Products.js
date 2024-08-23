@@ -38,7 +38,7 @@ export const getProductById = async(req, res) =>{
                 uuid: req.params.id
             }
         });
-        if(!product) return res.status(404).json({msg: "Data tidak ditemukan"});
+        if(!product) return res.status(404).json({msg: "Data not found"});
         let response;
         if(req.role === "admin"){
             response = await Product.findOne({
@@ -90,7 +90,7 @@ export const updateProduct = async(req, res) =>{
                 uuid: req.params.id
             }
         });
-        if(!product) return res.status(404).json({msg: "Data tidak ditemukan"});
+        if(!product) return res.status(404).json({msg: "Data not found"});
         const {name, price} = req.body;
         if(req.role === "admin"){
             await Product.update({name, price},{
@@ -99,7 +99,7 @@ export const updateProduct = async(req, res) =>{
                 }
             });
         }else{
-            if(req.userId !== product.userId) return res.status(403).json({msg: "Akses terlarang"});
+            if(req.userId !== product.userId) return res.status(403).json({msg: "Access Denied"});
             await Product.update({name, price},{
                 where:{
                     [Op.and]:[{id: product.id}, {userId: req.userId}]
@@ -119,7 +119,7 @@ export const deleteProduct = async(req, res) =>{
                 uuid: req.params.id
             }
         });
-        if(!product) return res.status(404).json({msg: "Data tidak ditemukan"});
+        if(!product) return res.status(404).json({msg: "Data not found"});
         const {name, price} = req.body;
         if(req.role === "admin"){
             await Product.destroy({
@@ -128,7 +128,7 @@ export const deleteProduct = async(req, res) =>{
                 }
             });
         }else{
-            if(req.userId !== product.userId) return res.status(403).json({msg: "Akses terlarang"});
+            if(req.userId !== product.userId) return res.status(403).json({msg: "Access Denied"});
             await Product.destroy({
                 where:{
                     [Op.and]:[{id: product.id}, {userId: req.userId}]

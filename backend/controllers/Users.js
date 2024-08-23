@@ -28,7 +28,7 @@ export const getUserById = async(req, res) =>{
 
 export const createUser = async(req, res) =>{
     const {name, email, password, confPassword, role} = req.body;
-    if(password !== confPassword) return res.status(400).json({msg: "Password dan Confirm Password tidak cocok"});
+    if(password !== confPassword) return res.status(400).json({msg: "Password and Confirm Password do not match"});
     const hashPassword = await argon2.hash(password);
     try {
         await User.create({
@@ -37,7 +37,7 @@ export const createUser = async(req, res) =>{
             password: hashPassword,
             role: role
         });
-        res.status(201).json({msg: "Register Berhasil"});
+        res.status(201).json({msg: "Registered Successfully"});
     } catch (error) {
         res.status(400).json({msg: error.message});
     }
@@ -49,7 +49,7 @@ export const updateUser = async(req, res) =>{
             uuid: req.params.id
         }
     });
-    if(!user) return res.status(404).json({msg: "User tidak ditemukan"});
+    if(!user) return res.status(404).json({msg: "User not found"});
     const {name, email, password, confPassword, role} = req.body;
     let hashPassword;
     if(password === "" || password === null){
@@ -57,7 +57,7 @@ export const updateUser = async(req, res) =>{
     }else{
         hashPassword = await argon2.hash(password);
     }
-    if(password !== confPassword) return res.status(400).json({msg: "Password dan Confirm Password tidak cocok"});
+    if(password !== confPassword) return res.status(400).json({msg: "Password and Confirm Password do not match"});
     try {
         await User.update({
             name: name,
@@ -81,7 +81,7 @@ export const deleteUser = async(req, res) =>{
             uuid: req.params.id
         }
     });
-    if(!user) return res.status(404).json({msg: "User tidak ditemukan"});
+    if(!user) return res.status(404).json({msg: "User not found"});
     try {
         await User.destroy({
             where:{
