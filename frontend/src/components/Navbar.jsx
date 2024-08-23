@@ -7,7 +7,7 @@ import { LogOut, reset } from "../features/authSlice";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
+  useSelector((state) => state.auth);
 
   const logout = () => {
     dispatch(LogOut());
