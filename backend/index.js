@@ -18,8 +18,8 @@ const store = new sessionStore({
 });
 
 // (async()=>{
-//     await db.sync();
-// })();
+//      await db.sync();
+//  })();
 
 app.use(session({
     secret: process.env.SESS_SECRET,
@@ -41,7 +41,7 @@ app.use(ProductRoute);
 app.use(AuthRoute);
 
 // store.sync();
-
-app.listen(process.env.APP_PORT, ()=> {
-    console.log('Server up and running...');
+const PORT = process.env.PORT ;
+app.listen(PORT, ()=> {
+    console.log(`Server up and running on ${PORT}...`);
 });

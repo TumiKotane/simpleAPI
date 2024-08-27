@@ -1,15 +1,15 @@
 import User from "../models/UserModel.js";
 import argon2 from "argon2";
 
-export const Login = async (req, res) =>{
+export const Login = async (req, res) =>{ // Login function
     const user = await User.findOne({
         where: {
-            email: req.body.email
+            email: req.body.email 
         }
     });
     if(!user) return res.status(404).json({msg: "user not found"});
     const match = await argon2.verify(user.password, req.body.password);
-    if(!match) return res.status(400).json({msg: "Wrong Password"});
+    if(!match) return res.status(400).json({msg: "Wrong Password"}); // 400 Bad Request
     req.session.userId = user.uuid;
     const uuid = user.uuid;
     const name = user.name;
@@ -38,3 +38,4 @@ export const logOut = (req, res) =>{
         res.status(200).json({msg: "You have successfully logged out"});
     });
 }
+
