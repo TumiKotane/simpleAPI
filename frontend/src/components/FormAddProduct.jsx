@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; // to use state
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // to navigate to another page
 
-const FormAddProduct = () => {
+const FormAddProduct = () => { // create a new product
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
-  const saveProduct = async (e) => {
+  const saveProduct = async (e) => { 
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/products", {
+      await axios.post("http://localhost:5000/products", { // send a POST request to the server
         name: name,
         price: price,
       });

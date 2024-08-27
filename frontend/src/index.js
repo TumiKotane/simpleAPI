@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
 import "bulma/css/bulma.css";
-import axios from "axios";
+import axios from "axios"; // to send requests to the server
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true; // to send cookies with requests
 
 const container = document.getElementById('root');
 const root = createRoot(container);
