@@ -10,18 +10,17 @@ const AddUser = () => {
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    dispatch(getMe());
-  }, [dispatch]);
 
-  useEffect(() => {
-    if (isError) {
-      navigate("/");
-    }
-    if (user && user.role !== "admin") {
-      navigate("/dashboard");
-    }
-  }, [isError, user, navigate]);
+ useEffect(() => {
+  // if (isError) {
+  //   navigate("/");
+  //   }
+  //  if (user && user.role !== "admin") {
+  //    navigate("/dashboard");
+  //   }
+    dispatch(getMe());
+
+}, [isError, user, navigate, dispatch]);
   return (
     <Layout>
       <FormAddUser />
