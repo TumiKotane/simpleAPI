@@ -12,7 +12,7 @@ export const verifyUser = async (req, res, next) =>{
     if(!user) return res.status(404).json({msg: "User not found"});
     req.userId = user.id;
     req.role = user.role; 
-    next();
+    next(); // next middleware
 }
 
 export const adminOnly = async (req, res, next) =>{

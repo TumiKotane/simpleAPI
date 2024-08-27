@@ -11,7 +11,7 @@ const initialState = {
 
 export const LoginUser = createAsyncThunk("user/LoginUser", async(user, thunkAPI) => {
     try {
-        const response = await axios.post('http://localhost:3000/login', { // port was 5000
+        const response = await axios.post('http://localhost:5000/login', { // port was 5000
             email: user.email,
             password: user.password
         });
