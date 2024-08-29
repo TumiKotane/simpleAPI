@@ -11,7 +11,9 @@ export const verifyUser = async (req, res, next) =>{
     });
     if(!user) return res.status(404).json({msg: "User not found"});
     req.userId = user.id;
-    req.role = user.role; 
+    req.role = user.role;
+    console.log(user.id); // holds the session by userID
+    console.log(user.role);//hold the session by role
     next(); // next middleware
 }
 
@@ -22,6 +24,6 @@ export const adminOnly = async (req, res, next) =>{
         }
     });
     if(!user) return res.status(404).json({msg: "User not found"});
-    if(user.role !== "admin") return res.status(403).json({msg: "Access Denied"});
+    if(user.role !== "Admin") return res.status(403).json({msg: "Access Denied"});
     next();
 } // adminOnly function

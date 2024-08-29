@@ -31,7 +31,7 @@ const Sidebar = () => {
             </NavLink>
           </li>
         </ul>
-        {user &&( //&& user.role === "admin" &&
+        {user && user.role === "Admin" &&( //&& user.role === "Admin" &&
           <div>
             <p className="menu-label">Admin</p>
             <ul className="menu-list">
