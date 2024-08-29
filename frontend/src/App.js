@@ -6,7 +6,8 @@ import Products from "./pages/Products";
 import AddUser from "./pages/AddUser";
 import EditUser from "./pages/EditUser";
 import AddProduct from "./pages/AddProduct";
-import EditProduct from "./pages/EditProduct";  
+import EditProduct from "./pages/EditProduct"; 
+
 
 function App() {
   return (

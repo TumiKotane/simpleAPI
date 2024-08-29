@@ -14,14 +14,14 @@ const Users = () => {
     dispatch(getMe());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isError) {
-      navigate("/");
-    }
-    if (user && user.role !== "admin") {
-      navigate("/dashboard");
-    }
-  }, [isError, user, navigate]);
+  // useEffect(() => {
+  //   if (isError) {
+  //     navigate("/");
+  //   }
+  //   if (user && user.role !== "admin") {
+  //     navigate("/dashboard");
+  //   }
+  // }, [isError, user, navigate]);
   return (
     <Layout>
       <Userlist />

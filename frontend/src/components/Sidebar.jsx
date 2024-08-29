@@ -10,7 +10,7 @@ const Sidebar = () => {
   const { user } = useSelector((state) => state.auth);
 
   const logout = () => {
-    dispatch(LogOut());
+    dispatch(LogOut()); 
     dispatch(reset());
     navigate("/");
   };
@@ -31,7 +31,7 @@ const Sidebar = () => {
             </NavLink>
           </li>
         </ul>
-        {user && user.role === "admin" && (
+        {user &&( //&& user.role === "admin" &&
           <div>
             <p className="menu-label">Admin</p>
             <ul className="menu-list">
