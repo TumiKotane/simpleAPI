@@ -2,34 +2,34 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-    user: null,
-    isError: false,
-    isSuccess: false,
-    isLoading: false,
+    user: null, // stores the authenticated user object
+    isError: false, // stores the error state
+    isSuccess: false, // stores the success state
+    isLoading: false, // stores the loading state
     message: ""
 }
 
-export const LoginUser = createAsyncThunk("user/LoginUser", async(user, thunkAPI) => {
+export const LoginUser = createAsyncThunk("user/LoginUser", async(user, thunkAPI) => { // user is the payload - POST request
     try {
         const response = await axios.post('http://localhost:5000/login', { // port was 5000
             email: user.email,
             password: user.password
         });
-        return response.data;
+        return response.data; // returns the response data
     } catch (error) {
         if(error.response){
             const message = error.response.data.msg;
-            return thunkAPI.rejectWithValue(message);
+            return thunkAPI.rejectWithValue(message); 
         }
     }
 });
 
-export const getMe = createAsyncThunk("user/getMe", async(_, thunkAPI) => {
+export const getMe = createAsyncThunk("user/getMe", async(_, thunkAPI) => { // GET request
     try {
         const response = await axios.get('http://localhost:5000/me');
         return response.data;
     } catch (error) {
-        if(error.response){
+        if(error.response){ 
             const message = error.response.data.msg;
             return thunkAPI.rejectWithValue(message);
         }

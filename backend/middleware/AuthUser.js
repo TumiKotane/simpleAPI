@@ -1,10 +1,10 @@
 import User from "../models/UserModel.js";
 
 export const verifyUser = async (req, res, next) =>{
-    if(!req.session.userId){
+    if(!req.session.userId){ // checks if the user is logged in - stored in the session
         return res.status(401).json({msg: "Please log in to your account!"});
     }
-    const user = await User.findOne({
+    const user = await User.findOne({ // checks if the user exists in the database
         where: {
             uuid: req.session.userId
         }

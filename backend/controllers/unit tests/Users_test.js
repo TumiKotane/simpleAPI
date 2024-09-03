@@ -304,7 +304,7 @@ describe("User Controller", () => {
       const error = new Error("Something went wrong");
       User.findOne.mockRejectedValue(error);
 
-      await deleteUser(req, res);
+      await deleteUser(req, res); // call the deleteUser function
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({ msg: error.message });

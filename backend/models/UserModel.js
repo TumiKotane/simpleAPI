@@ -6,7 +6,7 @@ const {DataTypes} = Sequelize;
 const Users = db.define('users',{
     uuid:{
         type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUIDV4, //generates a unique id
         allowNull: false,
         validate:{
             notEmpty: true

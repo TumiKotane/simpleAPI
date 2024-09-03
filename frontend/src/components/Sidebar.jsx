@@ -31,13 +31,13 @@ const Sidebar = () => {
             </NavLink>
           </li>
         </ul>
-        {user && user.role === "Admin" &&( //&& user.role === "Admin" &&
+        {user && user.role === "Admin" &&( //&& user.role === "Admin" && - condition to check if user is admin
           <div>
             <p className="menu-label">Admin</p>
             <ul className="menu-list">
               <li>
-                <NavLink to={"/users"}>
-                  <IoPerson /> Users
+                <NavLink to={"/users"}> 
+                  <IoPerson /> Users   
                 </NavLink>
               </li>
             </ul>

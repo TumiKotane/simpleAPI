@@ -15,7 +15,7 @@ const Userlist = () => {
     setUsers(response.data);
   };
 
-  const deleteUser = async (userId) => {
+  const deleteUser = async (userId) => { //
     await axios.delete(`http://localhost:5000/users/${userId}`);
     getUsers();
   };
